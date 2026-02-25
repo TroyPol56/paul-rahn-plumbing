@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Paul Rahn — Master Plumber Tampa | Rahn Plumbing LLC | Tampa, FL</title>
+<meta name="description" content="Rahn Plumbing LLC — Licensed master plumber serving Tampa, Westchase, Land O' Lakes FL. 89 five-star reviews. Call (813) 686-7246 for same-day service.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#4dd9ec;--cyan-dk:#29bdd4;--cyan-deep:#1a8fa6;--cyan-pale:#e6f9fc;
+  --mauve:#a3506f;--dark:#0c1b28;--dark2:#122030;--white:#fff;
+  --off:#f2fbfd;--muted:#4a6a78;--border:#b8edf5;--text:#0c1b28;
+  --ease:cubic-bezier(.22,.68,0,1.2);
+  /* MINIMUM 16px body text everywhere — no exceptions */
+  --body:17px;--body-sm:16px;--label:13px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;font-size:var(--body);line-height:1.8;}
+img{max-width:100%;height:auto;}
+p{font-size:var(--body);line-height:1.82;color:var(--muted);}
+p strong{color:var(--dark);font-weight:600;}
+li{font-size:var(--body);line-height:1.8;color:var(--muted);}
+.lead{font-size:19px;line-height:1.85;color:var(--muted);font-weight:300;}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.25;mix-blend-mode:overlay;}
+
+/* ── TOP BAR */
+.top-bar{background:var(--mauve);padding:10px 60px;display:flex;justify-content:flex-end;}
+.top-bar a{color:rgba(255,255,255,.92);font-size:15px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.top-bar a:hover{color:#fff;}
+
+/* ── NAV */
+nav{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);height:72px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 4px 28px rgba(77,217,236,.1);}
+.nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-logo-img{height:46px;width:auto;object-fit:contain;transition:transform .3s var(--ease);}
+.nav-brand:hover .nav-logo-img{transform:rotate(-8deg) scale(1.08);}
+.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--dark);letter-spacing:.02em;}
+.nav-brand-text em{font-style:normal;color:var(--cyan-deep);}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;padding-bottom:2px;border-bottom:2px solid transparent;}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan-deep);border-bottom-color:var(--cyan);}
+.nav-cta{background:var(--cyan);color:var(--dark)!important;font-size:14px;font-weight:700;padding:12px 24px;text-decoration:none;letter-spacing:.03em;transition:all .2s;white-space:nowrap;border-bottom:none!important;}
+.nav-cta:hover{background:var(--cyan-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(77,217,236,.3);}
+
+/* ── HAMBURGER — mobile nav */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:400;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);transition:all .3s;border-radius:2px;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-nav{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:350;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(-100%);transition:transform .4s var(--ease);}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#fff;text-decoration:none;transition:color .2s;}
+.mobile-nav a:hover{color:var(--cyan);}
+.mobile-nav .mobile-cta{background:var(--cyan);color:var(--dark)!important;font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;padding:16px 40px;margin-top:16px;}
+
+/* ── STICKY MOBILE CALL BUTTON */
+.sticky-call{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:400;
+  background:var(--cyan);color:var(--dark);
+  font-size:17px;font-weight:700;
+  padding:18px;text-align:center;text-decoration:none;
+  letter-spacing:.04em;
+  box-shadow:0 -4px 24px rgba(77,217,236,.3);
+  transition:background .2s;
+}
+.sticky-call:hover{background:var(--cyan-dk);}
+
+/* ── FLOAT BAR — desktop only */
+.float-bar{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;background:var(--dark);border:1px solid rgba(77,217,236,.2);display:flex;align-items:center;box-shadow:0 20px 60px rgba(0,0,0,.4);transition:transform .5s var(--ease),opacity .5s;opacity:0;white-space:nowrap;}
+.float-bar.visible{transform:translateX(-50%) translateY(0);opacity:1;}
+.float-bar-text{padding:14px 20px;font-size:15px;font-weight:500;color:rgba(255,255,255,.6);border-right:1px solid rgba(255,255,255,.08);}
+.float-bar-text strong{color:#fff;font-weight:700;}
+.float-bar a{display:flex;align-items:center;gap:9px;background:var(--cyan);color:var(--dark);font-size:15px;font-weight:700;padding:14px 22px;text-decoration:none;transition:background .2s;}
+.float-bar a:hover{background:var(--cyan-dk);}
+.float-bar-close{padding:14px 16px;color:rgba(255,255,255,.35);cursor:pointer;font-size:18px;border-left:1px solid rgba(255,255,255,.08);line-height:1;transition:color .2s;}
+.float-bar-close:hover{color:rgba(255,255,255,.7);}
+
+/* ── MARQUEE */
+.marquee-wrap{background:var(--cyan);padding:14px 0;overflow:hidden;}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mq{display:inline-flex;align-items:center;gap:10px;padding:0 36px;font-size:14px;font-weight:700;color:rgba(12,27,40,.72);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.mq-dot{width:5px;height:5px;background:rgba(12,27,40,.35);border-radius:50%;flex-shrink:0;}
+
+/* ── URGENCY BANNER */
+.urgency-bar{background:var(--dark);padding:12px 60px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
+.urgency-bar p{font-size:15px;color:rgba(255,255,255,.7);font-weight:300;margin:0;}
+.urgency-bar strong{color:#fff;font-weight:700;}
+.urgency-bar a{color:var(--cyan);font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(77,217,236,.3);transition:border-color .2s;}
+.urgency-bar a:hover{border-bottom-color:var(--cyan);}
+.urgency-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse-green 2s infinite;flex-shrink:0;}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.4);}50%{box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+
+/* ── UTILITIES */
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-deep);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--cyan);flex-shrink:0;}
+.eyebrow.center{justify-content:center;}
+.eyebrow.center::before,.eyebrow.center::after{content:'';width:28px;height:2px;background:var(--cyan);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:700;line-height:1.08;color:var(--dark);margin-bottom:20px;}
+.section-title em{font-style:italic;color:var(--cyan-deep);}
+.section-title.light{color:#fff;}
+.section-title.light em{color:var(--cyan);}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:700;padding:16px 34px;text-decoration:none;letter-spacing:.03em;transition:all .25s;position:relative;overflow:hidden;cursor:pointer;border:none;font-family:'Outfit',sans-serif;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-101%);transition:transform .3s;}
+.btn:hover::after{transform:translateX(0);}
+.btn-cyan{background:var(--cyan);color:var(--dark);}
+.btn-cyan:hover{background:var(--cyan-dk);transform:translateY(-2px);box-shadow:0 12px 30px rgba(77,217,236,.28);}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3);font-size:16px;font-weight:500;padding:14px 28px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.btn-ghost-white{color:rgba(255,255,255,.6);background:none;font-size:16px;font-weight:400;border:none;border-bottom:1px solid rgba(255,255,255,.2);padding:0 0 3px;text-decoration:none;transition:all .2s;}
+.btn-ghost-white:hover{color:#fff;border-color:rgba(255,255,255,.6);}
+.btn-ghost-dark{color:var(--muted);background:none;font-size:16px;font-weight:500;border:none;border-bottom:1px solid var(--border);padding:0 0 3px;text-decoration:none;transition:all .2s;}
+.btn-ghost-dark:hover{color:var(--dark);border-color:var(--cyan);}
+
+/* ── VALUE CARDS */
+.val-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.val{background:var(--off);border-left:3px solid var(--border);padding:24px 26px;transition:border-color .25s,background .25s;cursor:default;}
+.val:hover{border-left-color:var(--cyan);background:#d5f6fa;}
+.val h5{font-size:17px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.val p{font-size:16px;color:var(--muted);line-height:1.7;font-weight:300;}
+
+/* ── STATS ROW */
+.stats-row{background:var(--dark);padding:72px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.stat-block{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:40px 28px;text-align:center;transition:background .25s,transform .25s;cursor:default;position:relative;overflow:hidden;}
+.stat-block::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.stat-block:hover{background:rgba(77,217,236,.06);transform:translateY(-3px);}
+.stat-block:hover::after{transform:scaleX(1);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,5vw,76px);font-weight:700;color:var(--cyan);line-height:1;margin-bottom:10px;}
+.stat-suffix{font-size:.55em;vertical-align:super;}
+.stat-lbl{font-size:14px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;}
+
+/* ── REVIEW CARDS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.rev{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:36px 30px;position:relative;transition:background .25s,transform .25s;}
+.rev:hover{background:rgba(77,217,236,.07);transform:translateY(-3px);}
+.rev-bar{position:absolute;top:0;left:0;width:3px;height:0;background:var(--cyan);transition:height .4s ease;}
+.rev:hover .rev-bar{height:100%;}
+.rev-stars{color:var(--cyan);letter-spacing:3px;font-size:16px;margin-bottom:16px;}
+.rev-text{font-size:17px;line-height:1.82;color:rgba(255,255,255,.65);font-style:italic;font-weight:300;margin-bottom:22px;}
+.rev-author{font-size:14px;font-weight:600;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── TRUST CREDS */
+.creds-row{background:var(--cyan-pale);border-top:2px solid var(--border);border-bottom:2px solid var(--border);padding:52px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.cred{background:var(--white);border:1px solid var(--border);padding:28px 24px;text-align:center;transition:transform .2s,box-shadow .2s;cursor:default;}
+.cred:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(77,217,236,.12);}
+.cred-ico{font-size:32px;margin-bottom:14px;}
+.cred-name{font-size:17px;font-weight:700;color:var(--dark);margin-bottom:5px;}
+.cred-sub{font-size:15px;color:var(--muted);font-weight:300;}
+
+/* ── FAQ */
+.faq-section{padding:100px 60px;background:var(--white);}
+.faq-grid{max-width:800px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;padding:24px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;color:var(--dark);transition:color .2s;gap:16px;}
+.faq-q:hover{color:var(--cyan-deep);}
+.faq-icon{font-size:22px;color:var(--cyan);transition:transform .3s;flex-shrink:0;font-weight:300;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:24px;}
+.faq-a p{font-size:17px;color:var(--muted);line-height:1.82;}
+
+/* ── PHOTO STRIP */
+.strip{display:grid;grid-template-columns:1.4fr .8fr .8fr;height:420px;gap:4px;}
+.strip-item{position:relative;overflow:hidden;background:var(--dark2);}
+.strip-item img{width:100%;height:100%;object-fit:cover;opacity:.72;transition:transform .55s ease,opacity .55s ease;}
+.strip-item:hover img{transform:scale(1.05);opacity:.9;}
+.strip-lbl{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;background:linear-gradient(transparent,rgba(12,27,40,.85));font-size:14px;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.1em;text-transform:uppercase;}
+
+/* ── FOOTER */
+footer{background:var(--dark2);border-top:3px solid var(--cyan);padding:60px 60px 40px;}
+.footer-inner{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.footer-logo-img{height:44px;width:auto;object-fit:contain;filter:drop-shadow(0 0 8px rgba(77,217,236,.25));}
+.footer-brand-text{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:#fff;}
+.footer-brand-text em{font-style:normal;color:var(--cyan);}
+.footer-tagline{font-size:16px;color:rgba(255,255,255,.35);font-weight:300;line-height:1.75;max-width:260px;}
+.footer-col h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px;}
+.footer-col a{display:block;font-size:16px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:12px;transition:color .2s;}
+.footer-col a:hover{color:var(--cyan);}
+.footer-col p{font-size:16px;color:rgba(255,255,255,.38);margin-bottom:10px;line-height:1.7;}
+.footer-bottom{padding-top:24px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{font-size:14px;color:rgba(255,255,255,.2);}
+.footer-bottom a{font-size:14px;color:var(--cyan);text-decoration:none;}
+
+/* ── FORM */
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--white);border:1.5px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:17px;font-weight:400;padding:15px 17px;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;border-radius:0;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(77,217,236,.1);}
+.fg textarea{resize:vertical;min-height:110px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-submit{width:100%;background:var(--cyan);color:var(--dark);border:none;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:18px;cursor:pointer;margin-top:4px;transition:all .2s;position:relative;overflow:hidden;}
+.form-submit:hover{background:var(--cyan-dk);transform:translateY(-1px);}
+.form-success{display:none;background:var(--cyan-pale);border:1px solid var(--cyan);padding:24px;text-align:center;margin-top:16px;}
+.form-success p{font-size:17px;color:var(--cyan-deep);font-weight:600;margin:0;}
+
+/* ── SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── PAGE HERO */
+.page-hero{background:var(--dark);padding:110px 60px 90px;position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(77,217,236,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(163,80,111,.06) 0%,transparent 50%);}
+.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,217,236,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,217,236,.04) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.page-hero-content{position:relative;z-index:2;max-width:700px;}
+.page-hero-breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+.page-hero-breadcrumb a{font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;}
+.page-hero-breadcrumb a:hover{color:var(--cyan);}
+.page-hero-breadcrumb span{color:rgba(255,255,255,.2);font-size:14px;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,68px);font-weight:700;color:#fff;line-height:1.06;margin-bottom:22px;}
+.page-hero h1 em{font-style:italic;color:var(--cyan);}
+.page-hero .lead{color:rgba(255,255,255,.5);max-width:560px;}
+
+/* ── CONTACT */
+.contact-section{display:grid;grid-template-columns:1fr 1fr;}
+.contact-info{background:var(--dark);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,48px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:18px;}
+.contact-info h2 em{font-style:italic;color:var(--cyan);}
+.contact-info>.lead{color:rgba(255,255,255,.45);max-width:380px;margin-bottom:36px;}
+.ci-list{display:flex;flex-direction:column;gap:18px;}
+.ci{display:flex;align-items:center;gap:14px;font-size:17px;color:rgba(255,255,255,.65);}
+.ci-ico{width:42px;height:42px;background:rgba(77,217,236,.15);border:1px solid rgba(77,217,236,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.contact-form-col{background:var(--off);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+.contact-form-col h3{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.form-note{font-size:16px;color:var(--muted);margin-bottom:28px;font-weight:300;}
+
+/* ══ RESPONSIVE ══════════════════════════ */
+@media(max-width:1080px){
+  .top-bar{padding:10px 20px;}
+  nav{padding:0 20px;height:64px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .float-bar{display:none;}
+  .sticky-call{display:block;}
+  /* add padding so sticky call doesn't cover content */
+  body{padding-bottom:60px;}
+  .nav-logo-img{height:40px;}
+  .urgency-bar{padding:12px 20px;}
+  .stats-row{grid-template-columns:1fr 1fr;padding:48px 24px;gap:3px;}
+  .stat-lbl{font-size:13px;}
+  .strip{grid-template-columns:1fr 1fr;height:280px;}
+  .strip-item:last-child{display:none;}
+  .creds-row{grid-template-columns:1fr 1fr;padding:40px 24px;}
+  .rev-grid{grid-template-columns:1fr;}
+  .contact-section{grid-template-columns:1fr;}
+  .contact-info{padding:56px 24px;}
+  .contact-form-col{padding:56px 24px;}
+  footer{padding:48px 24px 80px;}
+  .footer-inner{grid-template-columns:1fr;gap:32px;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .page-hero{padding:72px 24px 60px;}
+  .val-grid{grid-template-columns:1fr;}
+  .fg-row{grid-template-columns:1fr;}
+  .faq-section{padding:72px 24px;}
+  .faq-q{font-size:17px;}
+}
+@media(max-width:640px){
+  .stats-row{padding:36px 20px;}
+  .creds-row{grid-template-columns:1fr 1fr;}
+  .rev-text{font-size:16px;}
+  .urgency-bar{display:none;}
+}
+</style>
+
+</head>
+<body>
+
+<div class="float-bar" id="floatBar">
+  <div class="float-bar-text"><strong>Paul Rahn</strong> — Master Plumber · Available Today</div>
+  <a href="tel:8136867246">📞 (813) 686-7246</a>
+  <div class="float-bar-close" id="floatClose">✕</div>
+</div>
+
+<div class="top-bar"><a href="tel:8136867246">📞 &nbsp;(813) 686-7246 — Call or Text Anytime</a></div>
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="data:image/png;base64,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" class="nav-logo-img" alt="Rahn Plumbing">
+    <span class="nav-brand-text">Rahn <em>Plumbing</em> LLC</span>
+  </a>
+  <ul class="nav-links"><li><a href="about.html" class="active">About Me</a></li><li><a href="services.html">Services</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">📞 Call Me Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="about.html">About Me</a><a href="services.html">Services</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a>
+  <a href="tel:8136867246" class="mobile-cta">📞 (813) 686-7246</a>
+</div>
+<a href="tel:8136867246" class="sticky-call">📞 &nbsp;Tap to Call Paul — (813) 686-7246</a>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,.6)">About Me</span></div>
+    <h1>15 Years. <em>One Plumber.</em><br>My Name on Every Job.</h1>
+    <p class="lead">I started Rahn Plumbing because I believed I could do better — for my customers and my family. That belief hasn't changed in 15 years.</p>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mq"><span class="mq-dot"></span>Licensed &amp; Insured</span>
+    <span class="mq"><span class="mq-dot"></span>Same-Day Service</span>
+    <span class="mq"><span class="mq-dot"></span>Free Visual Inspection</span>
+    <span class="mq"><span class="mq-dot"></span>Upfront Pricing</span>
+    <span class="mq"><span class="mq-dot"></span>Family-Owned Since 2009</span>
+    <span class="mq"><span class="mq-dot"></span>15+ Years Experience</span>
+    <span class="mq"><span class="mq-dot"></span>5.0 Google Rating</span>
+    <span class="mq"><span class="mq-dot"></span>89 Five-Star Reviews</span>
+    <span class="mq"><span class="mq-dot"></span>Licensed &amp; Insured</span>
+    <span class="mq"><span class="mq-dot"></span>Same-Day Service</span>
+    <span class="mq"><span class="mq-dot"></span>Free Visual Inspection</span>
+    <span class="mq"><span class="mq-dot"></span>Upfront Pricing</span>
+    <span class="mq"><span class="mq-dot"></span>Family-Owned Since 2009</span>
+    <span class="mq"><span class="mq-dot"></span>15+ Years Experience</span>
+    <span class="mq"><span class="mq-dot"></span>5.0 Google Rating</span>
+    <span class="mq"><span class="mq-dot"></span>89 Five-Star Reviews</span>
+  </div>
+</div>
+<section style="display:grid;grid-template-columns:1fr 1fr;min-height:70vh;">
+  <div style="position:relative;overflow:hidden;background:var(--dark2);">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80" style="width:100%;height:100%;object-fit:cover;opacity:.8;" loading="lazy" alt="Paul Rahn at work">
+  </div>
+  <div style="padding:88px 72px;display:flex;flex-direction:column;justify-content:center;background:var(--white);">
+    <div class="eyebrow reveal">My Story</div>
+    <h2 class="section-title reveal">Why I Started<br><em>Rahn Plumbing</em></h2>
+    <p class="reveal" style="margin-bottom:20px;">I spent years working for other companies. I was good at the work but frustrated with how those businesses treated customers — like transactions. Prices were inflated, the person who showed up wasn't always qualified, and nobody stood behind the work.</p>
+    <p class="reveal" style="margin-bottom:20px;">In 2009 I started Rahn Plumbing with one principle: <strong>when you hire me, you actually get me.</strong> A licensed master plumber with 15+ years of hands-on experience, personally handling every job.</p>
+    <p class="reveal" style="margin-bottom:36px;">Nothing about that has changed. I still answer my own phone. I still show up personally. I still price jobs honestly and don't leave until the work is right. My name is on the truck and my reputation is on every job.</p>
+    <a href="tel:8136867246" class="btn btn-cyan reveal" style="align-self:flex-start;">📞 Call (813) 686-7246</a>
+  </div>
+</section>
+<div class="stats-row">
+  <div class="stat-block reveal"><div class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-suffix">+</span></div><div class="stat-lbl">Years Experience</div></div>
+  <div class="stat-block reveal"><div class="stat-num"><span class="counter" data-target="89">0</span><span class="stat-suffix">+</span></div><div class="stat-lbl">Five-Star Reviews</div></div>
+  <div class="stat-block reveal"><div class="stat-num">5.0</div><div class="stat-lbl">Google Rating</div></div>
+  <div class="stat-block reveal"><div class="stat-num">$39</div><div class="stat-lbl">Service Call Fee</div></div>
+</div>
+<section style="padding:100px 60px;background:var(--off);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="eyebrow reveal">How I Work</div>
+    <h2 class="section-title reveal">What You Can <em>Always Expect</em></h2>
+    <div class="val-grid reveal" style="margin-top:32px;">
+      <div class="val"><h5>I answer my own phone</h5><p>Call (813) 686-7246 and you reach me directly. Not a call center, not a voicemail. Me.</p></div>
+      <div class="val"><h5>I come prepared</h5><p>I carry common parts in my truck. Most jobs are done in one visit — no second trip upcharge.</p></div>
+      <div class="val"><h5>I price it upfront</h5><p>$39 to diagnose. Before I touch anything, you know exactly what the full job costs.</p></div>
+      <div class="val"><h5>Free visual inspection</h5><p>While I'm there I check your other plumbing and flag anything worth knowing — no charge.</p></div>
+      <div class="val"><h5>I clean up after myself</h5><p>I leave your home exactly how I found it. Clean workspace, no mess left behind.</p></div>
+      <div class="val"><h5>I don't upsell</h5><p>If you don't need it I won't recommend it. My business runs on referrals, not one-time sales.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div style="text-align:center;margin-bottom:52px;">
+    <div class="eyebrow center reveal">Common Questions</div>
+    <h2 class="section-title reveal" style="text-align:center;">Everything You Want to <em>Know First</em></h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">What does the $39 service call cover?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>The $39 fee covers me coming out, diagnosing the problem, and giving you a full upfront quote. If you approve the work, that fee is applied toward the job. You'll always know the total cost before I touch anything.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you work on weekends?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Yes. Plumbing problems don't wait for Monday and neither do I. Call or text (813) 686-7246 and I'll let you know my availability. Emergency situations are always prioritized.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Will you be the one showing up — or do you send someone else?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>I show up personally on every job. No subcontractors, no apprentices working unsupervised. When you hire Rahn Plumbing you get Paul Rahn — that's the whole point.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you work on septic systems?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>No — septic systems require a different license and specialty equipment. I focus exclusively on residential plumbing inside and around the home. If you need a septic specialist I'm happy to point you in the right direction.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">How quickly can you come out?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Same-day for most jobs if you call in the morning. I always give you a realistic arrival window and I stick to it. I'll text you when I'm on my way.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you offer free estimates?<span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>The $39 service call covers the diagnosis and full written estimate. I don't give estimates over the phone without seeing the problem — anyone who does is guessing. Once I've seen it, you get an honest price before any work begins.</p></div>
+    </div>
+  </div>
+</section>
+<section style="background:var(--cyan-pale);border-top:2px solid var(--border);border-bottom:2px solid var(--border);padding:88px 60px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+  <div>
+    <div class="eyebrow reveal">Ready to Get Started?</div>
+    <h2 class="section-title reveal">Let's Talk About<br><em>What You Need</em></h2>
+    <p class="reveal" style="margin-bottom:32px;">Call me directly or send a message. I'll give you an honest read on what's involved and a fair price before any work begins.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+      <a href="tel:8136867246" class="btn btn-cyan">📞 (813) 686-7246</a>
+      <a href="contact.html" class="btn-ghost-dark">Send a message →</a>
+    </div>
+  </div>
+  <div class="reveal">
+    <div style="background:var(--white);border:1px solid var(--border);padding:36px;">
+      <div style="font-size:36px;margin-bottom:14px;">💬</div>
+      <p style="font-size:19px;font-style:italic;color:var(--dark);font-family:'Cormorant Garamond',serif;line-height:1.65;margin-bottom:16px;">"Paul is the most honest tradesperson I've ever hired. Fixed the real problem in 45 minutes and saved me hundreds."</p>
+      <div style="font-size:14px;font-weight:700;color:var(--cyan-deep);letter-spacing:.1em;text-transform:uppercase;">— Westchase Homeowner</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="data:image/png;base64,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" class="footer-logo-img" alt="Rahn Plumbing">
+        <span class="footer-brand-text">Rahn <em>Plumbing</em> LLC</span>
+      </div>
+      <p class="footer-tagline">Tampa's trusted master plumber. Licensed, insured, and personally on every job since 2009.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="repairs.html">Plumbing Repairs</a>
+      <a href="installations.html">Installations</a>
+      <a href="drains.html">Drain Cleaning</a>
+      <a href="water-heaters.html">Water Heaters</a>
+      <a href="services.html">All Services</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <a href="tel:8136867246">(813) 686-7246</a>
+      <p>12191 W Linebaugh Ave<br>Tampa, FL 33626</p>
+      <a href="contact.html">Send a Message</a>
+      <a href="reviews.html">Read Reviews</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rahn Plumbing LLC · Licensed &amp; Insured · Serving Hillsborough &amp; Pasco Counties, FL</p>
+    <a href="contact.html">Free Estimate →</a>
+  </div>
+</footer>
+
+<script>
+// nav scroll
+const nav=document.getElementById('nav');
+if(nav) window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+// hamburger
+const ham=document.getElementById('hamburger'), mNav=document.getElementById('mobileNav');
+if(ham&&mNav){
+  ham.addEventListener('click',()=>{ ham.classList.toggle('open'); mNav.classList.toggle('open'); document.body.style.overflow=mNav.classList.contains('open')?'hidden':''; });
+  mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ ham.classList.remove('open'); mNav.classList.remove('open'); document.body.style.overflow=''; }));
+}
+
+// float bar (desktop only)
+const fb=document.getElementById('floatBar');
+let dismissed=false;
+window.addEventListener('scroll',()=>{ if(!dismissed&&scrollY>window.innerHeight*.7&&window.innerWidth>1080) fb?.classList.add('visible'); });
+document.getElementById('floatClose')?.addEventListener('click',()=>{ dismissed=true; fb?.classList.remove('visible'); });
+
+// scroll reveal
+const revIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const sibs=[...e.target.parentElement.querySelectorAll('.reveal')];
+    const i=sibs.indexOf(e.target);
+    setTimeout(()=>e.target.classList.add('visible'),i*90);
+    revIO.unobserve(e.target);
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+
+// counters
+function animCounter(el){
+  const target=+el.dataset.target,dur=1800,s=performance.now();
+  const tick=n=>{ const t=Math.min((n-s)/dur,1),ease=1-Math.pow(1-t,3); el.textContent=Math.floor(ease*target); if(t<1)requestAnimationFrame(tick); else el.textContent=target; };
+  requestAnimationFrame(tick);
+}
+const cIO=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.querySelectorAll('.counter').forEach(animCounter); cIO.unobserve(e.target); } }); },{threshold:.3});
+document.querySelectorAll('.stats-row').forEach(el=>cIO.observe(el));
+
+// FAQ
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// form success
+const form=document.querySelector('form[data-netlify]');
+if(form){ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const success=document.querySelector('.form-success');
+  form.style.display='none';
+  if(success) success.style.display='block';
+}); }
+
+// magnetic + ripple
+document.querySelectorAll('.btn-cyan').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{ const r=btn.getBoundingClientRect(); btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.15}px) translateY(-2px)`; });
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+  btn.addEventListener('click',e=>{
+    const r=btn.getBoundingClientRect(),size=Math.max(r.width,r.height)*2;
+    const rip=document.createElement('span');
+    rip.style.cssText=`position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:rgba(255,255,255,.25);left:${e.clientX-r.left-size/2}px;top:${e.clientY-r.top-size/2}px;transform:scale(0);pointer-events:none;animation:ripAnim .6s ease-out forwards;`;
+    btn.appendChild(rip); setTimeout(()=>rip.remove(),600);
+  });
+});
+const ripSt=document.createElement('style');
+ripSt.textContent='@keyframes ripAnim{to{transform:scale(1);opacity:0;}}@keyframes thumbPulse{0%{transform:scale(1)}40%{transform:scale(1.07) translateY(-5px)}100%{transform:scale(1)}}@keyframes mascotWiggle{0%{transform:rotate(0) scale(1)}20%{transform:rotate(-4deg) scale(1.04)}40%{transform:rotate(4deg) scale(1.04)}60%{transform:rotate(-2deg) scale(1.02)}80%{transform:rotate(2deg) scale(1.02)}100%{transform:rotate(0) scale(1)}}';
+document.head.appendChild(ripSt);
+</script>
+
+</body>
+</html>
